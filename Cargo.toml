@@ -1,9 +1,10 @@
 [package]
 name = "cutout_runtime"
 version = "0.0.0"
-
-[dependencies]
-rusty_v8 = "*"
+edition = "2024"
 
 [lib]
 path = "core/lib.rs"
+
+[dependencies]
+v8 = "152.2.0"
