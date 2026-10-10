@@ -3,8 +3,18 @@ name = "cutout_runtime"
 version = "0.0.0"
 edition = "2024"
 
+[dependencies]
+v8 = "152.2.0"
+
 [lib]
 path = "core/lib.rs"
 
-[dependencies]
-v8 = "152.2.0"
+[[bin]]
+name = "cutout"
+path = "cli/main.rs"
+
+[profile.release]
+strip = true
+lto = true
+opt-level = "z"
+codegen-units = 1

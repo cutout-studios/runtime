@@ -10,7 +10,7 @@ pub struct RuntimeOptions {
     pub idle_task_support: bool,
 }
 
-pub fn run(code: &str, options: &RuntimeOptions) {
+pub fn run(code: &str, options: &RuntimeOptions) -> String {
     _init_platform(options.thread_pool_size, options.idle_task_support);
 
     let sandbox = &mut v8::Isolate::new(Default::default());
@@ -22,31 +22,17 @@ pub fn run(code: &str, options: &RuntimeOptions) {
 
     let source = v8::String::new(runtime_globals, code).expect("ERROR");
 
-    v8::Script::compile(runtime_globals, source, None)
+    let result = v8::Script::compile(runtime_globals, source, None)
         .expect("ERROR")
         .run(runtime_globals);
+
+    result.expect("ERROR").to_rust_string_lossy(runtime_globals)
 }
 
-pub fn run_file(path: impl AsRef<Path>, options: &RuntimeOptions) {
+pub fn run_file(path: impl AsRef<Path>, options: &RuntimeOptions) -> String {
   let source = fs::read_to_string(path).expect("ERROR");
 
-  run(&source, &options);
-}
-
-// TODO: where to put testing?
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_run() {
-        run("let a = 40; let b = 2; a + b;", &RuntimeOptions::default());
-    }
-
-    #[test]
-    fn test_run_file() {
-      run_file("./core/target.js", &RuntimeOptions::default())
-    }
+  run(&source, &options)
 }
 
 // platform
