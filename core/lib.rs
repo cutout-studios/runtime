@@ -26,6 +26,18 @@ pub fn run(code: &str, options: &RuntimeOptions) {
 
 // pub fn run_file() {}
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_run() {
+        run("let a = 40; let b = 2; a + b;", &RuntimeOptions::default());
+    }
+}
+
+// platform
+
 static SAFELY_START_V8: Once = sync::Once::new();
 
 fn _init_platform(thread_pool_size: u32, idle_task_support: bool) {
