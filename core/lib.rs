@@ -1,10 +1,13 @@
-use std::sync::{self, Once};
 use v8::{self, V8 as V8_Platform};
+
+use std::fs;
+use std::path::Path;
+use std::sync::{self, Once};
 
 #[derive(Default)]
 pub struct RuntimeOptions {
     pub thread_pool_size: u32,
-    pub idle_task_support: bool, // TODO: runtime modules (fetch, webgpu, and so on)
+    pub idle_task_support: bool,
 }
 
 pub fn run(code: &str, options: &RuntimeOptions) {
@@ -24,8 +27,13 @@ pub fn run(code: &str, options: &RuntimeOptions) {
         .run(runtime_globals);
 }
 
-// pub fn run_file() {}
+pub fn run_file(path: impl AsRef<Path>, options: &RuntimeOptions) {
+  let source = fs::read_to_string(path).expect("ERROR");
 
+  run(&source, &options);
+}
+
+// TODO: where to put testing?
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -34,10 +42,14 @@ mod tests {
     fn test_run() {
         run("let a = 40; let b = 2; a + b;", &RuntimeOptions::default());
     }
+
+    #[test]
+    fn test_run_file() {
+      run_file("./core/target.js", &RuntimeOptions::default())
+    }
 }
 
 // platform
-
 static SAFELY_START_V8: Once = sync::Once::new();
 
 fn _init_platform(thread_pool_size: u32, idle_task_support: bool) {
