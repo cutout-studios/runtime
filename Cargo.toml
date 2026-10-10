@@ -1,0 +1,9 @@
+[package]
+name = "cutout_runtime"
+version = "0.0.0"
+
+[dependencies]
+rusty_v8 = "*"
+
+[lib]
+path = "core/lib.rs"
