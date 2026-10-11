@@ -14,6 +14,8 @@ cargo build --bin cutout --release
 ## TODOs
 
 - [ ] error handling w/ traces
+- [ ] snapshot v8 heap to speed up initialization
+- [ ] default to repl when no file is passed
 - [ ] define `RuntimePlugin` and implement:
   - [ ] collision guards
   - [ ] `ConsolePlugin`
