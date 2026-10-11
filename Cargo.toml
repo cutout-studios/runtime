@@ -4,6 +4,11 @@ version = "0.0.0"
 edition = "2024"
 
 [dependencies]
+swc_common = "26.0.0"
+swc_ecma_ast = "29.0.2"
+swc_ecma_codegen = "32.0.3"
+swc_ecma_parser = "46.0.0"
+swc_ecma_transforms_typescript = "56.0.0"
 v8 = "152.2.0"
 
 [lib]

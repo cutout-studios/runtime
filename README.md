@@ -7,6 +7,6 @@
 ```sh
 cargo build --bin cutout --release
 
-./target/release/cutout ./test.js
+./target/release/cutout ./test.ts
 # => 3
 ```
