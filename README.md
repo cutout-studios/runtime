@@ -10,3 +10,17 @@ cargo build --bin cutout --release
 ./target/release/cutout ./test.ts
 # => 3
 ```
+
+## TODOs
+
+- [ ] error handling w/ traces
+- [ ] define `RuntimePlugin` and implement:
+  - [ ] collision guards
+  - [ ] `ConsolePlugin`
+  - [ ] `FetchPlugin`
+  - [ ] `ServePlugin`
+  - [ ] `--plugins=console,fetch,serve`
+- [ ] implement remote imports
+- [ ] `runtime.jsonc` support
+  - [ ] ability to configure jsx pragma
+- [ ] `runtime.jsonc` VSCode plugin
