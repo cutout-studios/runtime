@@ -1,4 +1,4 @@
-use cutout_runtime as xo;
+use xo_runtime as xo;
 
 use std::env;
 

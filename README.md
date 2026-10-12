@@ -5,24 +5,36 @@
 > If the community rallies around a stable fork, this project may no longer be necessary.
 
 ```sh
-cargo build --bin cutout --release
+cargo build --bin xo --release
 
-./target/release/cutout ./test.ts
+./target/release/xo ./test.ts
 # => 3
 ```
 
 ## TODOs
 
 - [ ] error handling w/ traces
-- [ ] snapshot v8 heap to speed up initialization
-- [ ] default to repl when no file is passed
-- [ ] define `RuntimePlugin` and implement:
-  - [ ] collision guards
-  - [ ] `ConsolePlugin`
-  - [ ] `FetchPlugin`
-  - [ ] `ServePlugin`
-  - [ ] `--plugins=console,fetch,serve`
-- [ ] implement remote imports
-- [ ] `runtime.jsonc` support
-  - [ ] ability to configure jsx pragma
-- [ ] `runtime.jsonc` VSCode plugin
+- [ ] define collision-proof `RuntimeExtension` and implement:
+  - [ ] xo_console
+  - [ ] xo_fetch
+  - [ ] xo_serve
+- [ ] minimal `runtime.jsonc` support
+
+```jsonc
+{
+  "compilerOptions": {
+    "jsxImportSource": "jsr:@cutout/kernel"
+  },
+  "runtime": {
+    // bonus - types the globalThis object
+    "extensions": [
+      "xo_console",
+      "xo_fetch",
+      "xo_serve
+    ]
+  }
+}
+```
+
+- [ ] get VSCode to work with `runtime.jsonc`
+- [ ] CI/CD

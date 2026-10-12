@@ -1,6 +1,6 @@
 [package]
-name = "cutout_runtime"
-version = "0.0.0"
+name = "xo_runtime"
+version = "0.0.1"
 edition = "2024"
 
 [dependencies]
@@ -15,7 +15,7 @@ v8 = "152.2.0"
 path = "core/lib.rs"
 
 [[bin]]
-name = "cutout"
+name = "xo"
 path = "cli/main.rs"
 
 [profile.release]

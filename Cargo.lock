@@ -254,18 +254,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "cutout_runtime"
-version = "0.0.0"
-dependencies = [
- "swc_common",
- "swc_ecma_ast",
- "swc_ecma_codegen",
- "swc_ecma_parser",
- "swc_ecma_transforms_typescript",
- "v8",
-]
-
-[[package]]
 name = "digest"
 version = "0.10.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1744,6 +1732,18 @@ name = "writeable"
 version = "0.6.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3ad82d2a33cdc9674dc7465672f271e096168fcdbe0f799d9e6db8c5892679dc"
+
+[[package]]
+name = "xo_runtime"
+version = "0.0.1"
+dependencies = [
+ "swc_common",
+ "swc_ecma_ast",
+ "swc_ecma_codegen",
+ "swc_ecma_parser",
+ "swc_ecma_transforms_typescript",
+ "v8",
+]
 
 [[package]]
 name = "yoke"
